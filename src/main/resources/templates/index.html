@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People Information</title>
+</head>
+<body>
+<h1>People List</h1>
+
+<!-- Display the list of people -->
+<ul>
+    <li th:each="person : ${people}">
+        <span th:text="${person.name}">Name</span>,
+        <span th:text="${person.age}">Age</span>
+    </li>
+</ul>
+
+
+<h2>Add a new person:</h2>
+<form action="#" th:action="@{/addPerson}" th:object="${person}" method="post">
+    <p>Name: <input type="text" th:value="${name}" id="name" name="name" />
+    <p>Age: <input type="number" th:value="${age}" id="age" name="age" />
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
