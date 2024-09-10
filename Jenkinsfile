@@ -143,7 +143,7 @@ pipeline {
                         ./kubectl config use-context sit753k8s
                         ./kubectl config current-context
                         ./kubectl delete deployment my-website --ignore-not-found=true
-                        ./kubectl delete deployment my-website-service --ignore-not-found=true
+                        ./kubectl delete service my-website-service --ignore-not-found=true
                         sleep 10
                         
                         ./kubectl create deployment my-website --image=${container_registry}/springbootapp:${currentBuild.number} --port=8080
