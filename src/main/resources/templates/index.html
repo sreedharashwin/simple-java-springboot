@@ -3,24 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <title>People Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        span {
+            font-weight: bold;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        form p {
+            margin: 10px 0;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #f44336;
+            color: white;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input[type="reset"]:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
 <body>
-<h1>People List</h1>
+    <h1>People List</h1>
 
-<!-- Display the list of people -->
-<ul>
-    <li th:each="person : ${people}">
-        <span th:text="${person.name}">Name</span>,
-        <span th:text="${person.age}">Age</span>
-    </li>
-</ul>
+    <!-- Display the list of people -->
+    <ul>
+        <li th:each="person : ${people}">
+            <span th:text="${person.name}">Name</span>,
+            <span th:text="${person.age}">Age</span>
+        </li>
+    </ul>
 
-
-<h2>Add a new person:</h2>
-<form action="#" th:action="@{/addPerson}" th:object="${person}" method="post">
-    <p>Name: <input type="text" th:value="${name}" id="name" name="name" />
-    <p>Age: <input type="number" th:value="${age}" id="age" name="age" />
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+    <h2>Add a New Person</h2>
+    <form action="#" th:action="@{/addPerson}" th:object="${person}" method="post">
+        <p>Name: <input type="text" th:value="${name}" id="name" name="name" required /></p>
+        <p>Age: <input type="number" th:value="${age}" id="age" name="age" required /></p>
+        <p>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </p>
+    </form>
 </body>
 </html>
