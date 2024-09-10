@@ -1,5 +1,5 @@
 # Maven base image
-FROM maven:3.8.4-openjdk-11-slim AS build
+FROM --platform=linux/amd64 maven:3.8.4-openjdk-11-slim AS build
 
 # Setting the working directory in the container
 WORKDIR /app
