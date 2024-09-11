@@ -69,8 +69,9 @@ pipeline {
                         emailext(
                             subject: "[Jenkins] Production Deployment Approval",
                             to: "qwertyorg2@gmail.com",
-                            body: 'This link is valid for ten mins., after which the pipeline will abort.
-                            ''<a href="${BUILD_URL}input">Click here to approve</a>'''
+                            body: '''<h2>Click to approve</h2>
+                            <p><strong>This link is valid for ten minutes. After this period, the pipeline will abort.</strong></p>
+                            <p><a href="${BUILD_URL}input">Approve Deployment</a></p>'''
                         )
                     }
                 }
