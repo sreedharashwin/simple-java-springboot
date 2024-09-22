@@ -16,7 +16,7 @@ COPY src src
 # Building the application
 RUN mvn clean package -DskipTests
 
-# Java base image
+# Java base
 FROM openjdk:11-jre-slim
 
 # Setting the working directory in the container
