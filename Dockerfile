@@ -1,5 +1,5 @@
 # Maven base image
-FROM maven:3.8.4-openjdk-11-slim AS build
+FROM maven:amazoncorretto AS build
 
 # Setting the working directory in the container
 WORKDIR /app
@@ -22,7 +22,7 @@ FROM openjdk:11-jre-slim
 # Setting the working directory in the container
 WORKDIR /app
 
-# Copying the JAR file from the build folder to the container
+# Copying the JAR file from the build folder to the containe
 COPY --from=build /app/target/*.jar app.jar
 
 # Exposing the port your application runs on

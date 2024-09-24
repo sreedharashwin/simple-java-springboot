@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.*;
 @ComponentScan
 @Controller
 public class PersonController {
-    @Autowired
-    private PersonService personService;
+
+    private final PersonService personService;
+
+    PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     @GetMapping("/")
     public String getAllPeople(Model model) {

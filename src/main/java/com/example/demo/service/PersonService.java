@@ -10,8 +10,11 @@ import java.util.List;
 @Component
 public class PersonService implements IPersonService{
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @Override
     public List<Person> findAll() {
