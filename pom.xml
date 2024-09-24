@@ -5,13 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.3</version>
+		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<packaging>jar</packaging>
+	<name>simple-spring-app</name>
 	<description>Demo project for Spring MVC</description>
 	<properties>
 		<java.version>11</java.version>
@@ -40,6 +41,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>3.3.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -62,9 +68,9 @@
                 </executions>
             </plugin>
 				<plugin>
-            		<groupId>org.codehaus.mojo</groupId>
-            		<artifactId>sonar-maven-plugin</artifactId>
-            		<version>3.9.0.2155</version>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>4.0.0.4121</version>
         	</plugin>
 		</plugins>
 	</build>

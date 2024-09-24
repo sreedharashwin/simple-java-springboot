@@ -5,6 +5,7 @@ import com.example.demo.repository.PersonRepository;
 
 import java.util.List;
 
+import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -15,26 +16,24 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PersonController {
     @Autowired
-    private PersonRepository personRepository;
+    private PersonService personService;
 
-    @GetMapping("/people")
+    @GetMapping("/")
     public String getAllPeople(Model model) {
-        List<Person> people = personRepository.findAll();
+        List<Person> people = personService.findAll();
         model.addAttribute("people", people);
         return "index";
     }
 
     @PostMapping("/addPerson")
     public String createPerson(@ModelAttribute("person") Person person) {
-        personRepository.save(person);
-        return "redirect:/people"; // Redirect to prevent duplicate form submissions
+        personService.save(person);
+        return "redirect:/"; // Redirect to prevent duplicate form submissions
     }
 
-    // Handle the display all users action
-    @GetMapping("/allUsers")
-    public String displayAllUsers(Model model) {
-        model.addAttribute("people", personRepository.findAll());
-        model.addAttribute("person", new Person()); // For the form
-        return "index"; // Return to the same page with all users displayed
+    @PostMapping("/deletePerson")
+    public String deletePerson(@RequestParam("id") String id) {
+        personService.deleteById(id);
+        return "redirect:/";
     }
 }

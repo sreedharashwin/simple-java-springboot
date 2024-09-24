@@ -67,6 +67,18 @@
         input[type="reset"]:hover {
             background-color: #e53935;
         }
+        .delete-link {
+            text-decoration: none;
+            color: white;
+            background-color: #f44336;
+            padding: 5px 10px;
+            border-radius: 5px;
+            float: right;
+            transition: background-color 0.3s;
+        }
+        .delete-link:hover {
+            background-color: #e53935;
+        }
     </style>
 </head>
 <body>
@@ -75,8 +87,11 @@
     <!-- Display the list of people -->
     <ul>
         <li th:each="person : ${people}">
-            <span th:text="${person.name}">Name</span>,
+            <form action="#" th:action="@{/deletePerson(id=${person.id})}" method="post">
+            <span th:text="${person.name}">Name</span>
             <span th:text="${person.age}">Age</span>
+                <button type="submit" class="delete-link" style="display: inline">Delete</button>
+            </form>
         </li>
     </ul>
 
