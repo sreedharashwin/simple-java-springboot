@@ -51,7 +51,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 script {
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springbootapp -Dsonar.projectName='springbootapp' -Dsonar.token=sqp_49777e9df286eba7f587277b7b7ebd6200d71911"
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springbootapp -Dsonar.projectName='springbootapp' -Dsonar.token=sqp_49777e9df286eba7f587277b7b7ebd6200d71911 -Pcoverage"
                 }
             }
         }
